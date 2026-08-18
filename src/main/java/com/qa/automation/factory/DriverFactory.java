@@ -1,6 +1,7 @@
 package com.qa.automation.factory;
 
 import com.qa.automation.utils.ConfigManager;
+import com.qa.automation.utils.ExecutionDelay;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -56,7 +57,12 @@ public class DriverFactory {
         }
 
         driver.manage().window().maximize();
-        driverThreadLocal.set(driver);
+        
+        // Apply ExecutionDelay Listener
+        ExecutionDelay executionDelay = new ExecutionDelay();
+        WebDriver decoratedDriver = new org.openqa.selenium.support.events.EventFiringDecorator<>(executionDelay).decorate(driver);
+        
+        driverThreadLocal.set(decoratedDriver);
         logger.info("{} started successfully.", browser);
         
         return getDriver();
