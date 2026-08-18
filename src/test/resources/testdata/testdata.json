@@ -1,0 +1,25 @@
+{
+  "validUser": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "invalidUser": {
+    "username": "locked_out_user",
+    "password": "secret_sauce"
+  },
+  "checkoutUser": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "postalCode": "12345"
+  },
+  "products": [
+    {
+      "name": "Sauce Labs Backpack",
+      "price": "$29.99"
+    },
+    {
+      "name": "Sauce Labs Bike Light",
+      "price": "$9.99"
+    }
+  ]
+}

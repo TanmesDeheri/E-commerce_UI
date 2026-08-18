@@ -1,0 +1,58 @@
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### VS Code ###
+.vscode/
+*.code-workspace
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### OS Files ###
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+### Logs and Reports ###
+*.log
+logs/
+allure-results/
+allure-report/
+reports/
+test-output/
+
+### Test Automation Artifacts ###
+screenshots/
+videos/
+downloads/
+drivers/
+
+### Environment Variables ###
+.env
+.env.*
+
+### Test Data (Ignore if sensitive, keeping template) ###
+# src/test/resources/testdata/secrets.json

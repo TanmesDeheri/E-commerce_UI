@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="E-Commerce Automation Suite" parallel="classes" thread-count="2">
+    <listeners>
+        <listener class-name="com.qa.automation.utils.TestListener" />
+    </listeners>
+
+    <test name="End-to-End Tests">
+        <groups>
+            <run>
+                <include name="smoke" />
+                <include name="e2e" />
+                <include name="regression" />
+            </run>
+        </groups>
+        <classes>
+            <class name="com.qa.automation.tests.LoginTest" />
+            <class name="com.qa.automation.tests.ProductCheckoutTest" />
+        </classes>
+    </test>
+</suite>
