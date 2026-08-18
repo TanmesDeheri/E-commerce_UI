@@ -35,7 +35,9 @@ public class ProductsPage {
     }
 
     public CartPage goToCart() {
-        waitUtility.waitForElementClickable(cartIcon).click();
+        org.openqa.selenium.WebElement cartIconBtn = waitUtility.waitForElementClickable(cartIcon);
+        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", cartIconBtn);
+        cartIconBtn.click();
         return new CartPage(driver);
     }
 }

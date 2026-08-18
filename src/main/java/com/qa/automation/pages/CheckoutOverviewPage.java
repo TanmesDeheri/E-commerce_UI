@@ -32,7 +32,9 @@ public class CheckoutOverviewPage {
     }
 
     public CheckoutCompletePage clickFinish() {
-        waitUtility.waitForElementClickable(finishButton).click();
+        org.openqa.selenium.WebElement finishBtn = waitUtility.waitForElementClickable(finishButton);
+        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", finishBtn);
+        finishBtn.click();
         return new CheckoutCompletePage(driver);
     }
 }

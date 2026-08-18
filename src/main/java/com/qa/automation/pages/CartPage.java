@@ -45,7 +45,9 @@ public class CartPage {
     }
 
     public CheckoutPage proceedToCheckout() {
-        waitUtility.waitForElementClickable(checkoutButton).click();
+        WebElement checkoutBtn = waitUtility.waitForElementClickable(checkoutButton);
+        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", checkoutBtn);
+        checkoutBtn.click();
         return new CheckoutPage(driver);
     }
 }
