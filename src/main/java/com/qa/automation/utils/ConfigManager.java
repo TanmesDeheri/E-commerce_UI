@@ -28,14 +28,27 @@ public class ConfigManager {
     }
 
     public static String getProperty(String key) {
-        String value = properties.getProperty(key);
+        // 1. Check System Properties (passed via -Dkey=value)
+        String value = System.getProperty(key);
+        
+        // 2. Check Environment Variables
+        if (value == null || value.trim().isEmpty()) {
+            value = System.getenv(key);
+        }
+        
+        // 3. Fallback to config.properties
+        if (value == null || value.trim().isEmpty()) {
+            value = properties.getProperty(key);
+        }
+        
         if (value == null) {
-            logger.warn("Property {} not found in configuration file", key);
+            logger.warn("Property {} not found in System properties, Environment variables, or configuration file", key);
         }
         return value;
     }
 
     public static String getProperty(String key, String defaultValue) {
-        return properties.getProperty(key, defaultValue);
+        String value = getProperty(key);
+        return (value != null && !value.trim().isEmpty()) ? value : defaultValue;
     }
 }

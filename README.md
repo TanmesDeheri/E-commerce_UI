@@ -63,10 +63,16 @@ The framework integrates **Allure Reporting** along with a custom TestNG Listene
 - Maven installed and added to PATH.
 - Chrome browser installed (default).
 
-### Execution Command
-To run the entire suite defined in `testng.xml`:
+### Local Execution (Visible Browser)
+To run the entire suite defined in `testng.xml` with a visible browser window:
 ```bash
 mvn clean test
+```
+
+### Headless Execution
+To run the tests headlessly (without opening a visible browser window):
+```bash
+mvn clean test -Dheadless=true
 ```
 
 ### Generating Allure Report
@@ -77,8 +83,43 @@ mvn allure:serve
 
 *Note: Screenshots of failures are saved in `reports/screenshots/` and embedded directly into the Allure report.*
 
+## 🚀 CI/CD with GitHub Actions
+
+The project is fully integrated with **GitHub Actions** to enable Continuous Integration and Continuous Deployment (CI/CD) of test reports.
+
+- Pushing to the `main` branch or creating a pull request automatically triggers the `automation-tests.yml` workflow.
+- Tests execute automatically in **Chrome Headless** mode on an Ubuntu runner.
+- Test artifacts (Surefire reports, Allure results, and screenshots) are preserved even if tests fail.
+- The workflow automatically generates an **Allure HTML Report** and publishes it to **GitHub Pages**.
+
+### CI/CD Architecture
+
+```mermaid
+graph TD
+    A[Developer] -->|git push| B(GitHub Repository)
+    B --> C{GitHub Actions}
+    C -->|Setup| D[Java 17]
+    C -->|Setup| E[Maven Cache]
+    C -->|Execute| F[Selenium + Chrome Headless]
+    F --> G(TestNG Tests)
+    G -->|On Failure| H[Screenshots]
+    G -->|Results| I[Allure Results]
+    H -.-> I
+    I --> J[Allure HTML Report]
+    J --> K[GitHub Pages]
+    K --> L((Live Automation Report))
+```
+
+## 📊 Latest Automation Report
+
+[![UI Automation Tests](https://github.com/<github-username>/<repository-name>/actions/workflows/automation-tests.yml/badge.svg)](https://github.com/<github-username>/<repository-name>/actions/workflows/automation-tests.yml)
+
+**Live Allure Report:**
+[https://<github-username>.github.io/<repository-name>/](https://<github-username>.github.io/<repository-name>/)
+
+*(Note: Replace `<github-username>` and `<repository-name>` with your actual GitHub details. The URL becomes active after GitHub Pages is enabled in your repository settings and the first successful deployment occurs.)*
+
 ## 🔮 Future Enhancements
 - **Cross-Browser Testing**: Expand `testng.xml` parameters to run tests across Chrome, Firefox, and Edge.
 - **Parallel Execution**: Refine thread counts in `testng.xml` for faster execution of large suites.
-- **CI/CD Integration**: Add GitHub Actions workflow to run tests automatically on pull requests.
 - **Selenium Grid / Docker**: Execute tests in isolated Docker containers for a stable grid environment.
