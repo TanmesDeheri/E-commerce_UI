@@ -3,6 +3,7 @@ package com.qa.automation.pages;
 import com.qa.automation.utils.WaitUtility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class CheckoutPage {
     private WebDriver driver;
@@ -21,26 +22,21 @@ public class CheckoutPage {
     }
 
     public void enterCustomerInformation(String firstName, String lastName, String postalCode) {
-        org.openqa.selenium.WebElement fName = waitUtility.waitForElementVisible(firstNameInput);
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", fName);
+        WebElement fName = waitUtility.scrollAndClick(firstNameInput);
         fName.clear();
         fName.sendKeys(firstName);
         
-        org.openqa.selenium.WebElement lName = waitUtility.waitForElementVisible(lastNameInput);
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", lName);
+        WebElement lName = waitUtility.scrollAndClick(lastNameInput);
         lName.clear();
         lName.sendKeys(lastName);
         
-        org.openqa.selenium.WebElement pCode = waitUtility.waitForElementVisible(postalCodeInput);
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", pCode);
+        WebElement pCode = waitUtility.scrollAndClick(postalCodeInput);
         pCode.clear();
         pCode.sendKeys(postalCode);
     }
 
     public CheckoutOverviewPage clickContinue() {
-        org.openqa.selenium.WebElement continueBtn = waitUtility.waitForElementClickable(continueButton);
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", continueBtn);
-        continueBtn.click();
+        waitUtility.scrollAndClick(continueButton);
         return new CheckoutOverviewPage(driver);
     }
     

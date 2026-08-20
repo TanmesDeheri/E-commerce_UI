@@ -1,0 +1,109 @@
+---- AspectJ Properties ---
+AspectJ Compiler 1.9.22.1 built on Friday May 10, 2024 at 23:23:16 PDT
+---- Dump Properties ---
+Dump file: ajcore.20260820.174930.465.txt
+Dump reason: java.lang.ClassFormatError
+Dump on exception: true
+Dump at exit condition: abort
+---- Exception Information ---
+java.lang.ClassFormatError: Field "pc" in class org/aspectj/weaver/patterns/PerTypeWithin has illegal signature "Code"
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:974)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:145)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:776)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(BuiltinClassLoader.java:691)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:620)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:578)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:502)
+	at org.aspectj.weaver.bcel.BcelObjectType.ensureAspectJAttributesUnpacked(BcelObjectType.java:403)
+	at org.aspectj.weaver.bcel.BcelObjectType.<init>(BcelObjectType.java:161)
+	at org.aspectj.weaver.bcel.BcelWorld.buildBcelDelegate(BcelWorld.java:426)
+	at org.aspectj.weaver.bcel.BcelWorld.resolveDelegate(BcelWorld.java:421)
+	at org.aspectj.weaver.ltw.LTWWorld.resolveDelegate(LTWWorld.java:112)
+	at org.aspectj.weaver.World.resolveToReferenceType(World.java:494)
+	at org.aspectj.weaver.World.resolve(World.java:329)
+	at org.aspectj.weaver.bcel.BcelWeaver.addLibraryAspect(BcelWeaver.java:158)
+	at org.aspectj.weaver.loadtime.ClassLoaderWeavingAdaptor.registerAspects(ClassLoaderWeavingAdaptor.java:497)
+	at org.aspectj.weaver.loadtime.ClassLoaderWeavingAdaptor.registerDefinitions(ClassLoaderWeavingAdaptor.java:316)
+	at org.aspectj.weaver.loadtime.ClassLoaderWeavingAdaptor.initialize(ClassLoaderWeavingAdaptor.java:184)
+	at org.aspectj.weaver.loadtime.Aj$ExplicitlyInitializedClassLoaderWeavingAdaptor.initialize(Aj.java:341)
+	at org.aspectj.weaver.loadtime.Aj$ExplicitlyInitializedClassLoaderWeavingAdaptor.getWeavingAdaptor(Aj.java:346)
+	at org.aspectj.weaver.loadtime.Aj$WeaverContainer.getWeaver(Aj.java:320)
+	at org.aspectj.weaver.loadtime.Aj.preProcess(Aj.java:114)
+	at org.aspectj.weaver.loadtime.ClassPreProcessorAgentAdapter.transform(ClassPreProcessorAgentAdapter.java:51)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:594)
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:974)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:145)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:776)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(BuiltinClassLoader.java:691)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:620)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:578)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:502)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:560)
+	at java.base/sun.launcher.LauncherHelper.loadMainClass(LauncherHelper.java:873)
+	at java.base/sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:758)
+---- System Properties ---
+java.specification.version=26
+sun.cpu.isalist=amd64
+sun.jnu.encoding=Cp1252
+java.class.path=C:\Users\deher\AppData\Local\Temp\surefire2098016511146880434\surefirebooter-20260820174930097_3.jar
+java.vm.vendor=Oracle Corporation
+sun.arch.data.model=64
+user.variant=
+java.vendor.url=https://java.oracle.com/
+user.timezone=Asia/Calcutta
+java.vm.specification.version=26
+os.name=Windows 11
+sun.java.launcher=SUN_STANDARD
+user.country=IN
+sun.boot.library.path=C:\Program Files\Java\jdk-26.0.1\bin
+sun.java.command=C:\Users\deher\AppData\Local\Temp\surefire2098016511146880434\surefirebooter-20260820174930097_3.jar C:\Users\deher\AppData\Local\Temp\surefire2098016511146880434 2026-08-20T17-49-29_945-jvmRun1 surefire-20260820174930097_1tmp surefire_0-20260820174930097_2tmp
+jdk.debug=release
+sun.cpu.endian=little
+user.home=C:\Users\deher
+user.language=en
+java.specification.vendor=Oracle Corporation
+java.version.date=2026-04-21
+java.home=C:\Program Files\Java\jdk-26.0.1
+file.separator=\
+java.vm.compressedOopsMode=Zero based
+line.separator=
+
+java.vm.specification.vendor=Oracle Corporation
+java.specification.name=Java Platform API Specification
+user.script=
+sun.management.compiler=HotSpot 64-Bit Tiered Compilers
+java.runtime.version=26.0.1+8-34
+user.name=deher
+stdout.encoding=Cp1252
+path.separator=;
+os.version=10.0
+java.runtime.name=Java(TM) SE Runtime Environment
+file.encoding=UTF-8
+java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+java.vendor.url.bug=https://bugreport.java.com/bugreport/
+java.io.tmpdir=C:\Users\deher\AppData\Local\Temp\
+java.version=26.0.1
+user.dir=D:\Projects\QA Automation Project\End_To_End_UI_Automation
+os.arch=amd64
+java.vm.specification.name=Java Virtual Machine Specification
+sun.os.patch.level=
+native.encoding=Cp1252
+java.library.path=C:\Program Files\Java\jdk-26.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;c:\Users\deher\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\deher\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Users\deher\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\deher\.local\bin;C:\Users\deher\AppData\Local\Microsoft\WindowsApps;C:\Users\deher\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\deher\AppData\Local\Python\bin;C:\Users\deher\AppData\Local\Programs\Ollama;C:\Program Files\Java\jdk-26.0.1\bin;C:\Users\deher\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Users\deher\AppData\Local\Programs\Antigravity IDE\bin;C:\Users\deher\AppData\Local\Pandoc\;C:\Program Files\apache-maven-3.9.16\bin;;.
+java.vm.info=mixed mode, sharing
+stderr.encoding=Cp1252
+java.vendor=Oracle Corporation
+java.vm.version=26.0.1+8-34
+stdin.encoding=Cp1252
+sun.io.unicode.encoding=UnicodeLittle
+java.class.version=70.0
+---- Command Line ---
+Empty
+---- Full Classpath ---
+Empty
+---- Compiler Messages ---
+Empty

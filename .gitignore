@@ -43,7 +43,7 @@ allure-results/
 allure-report/
 reports/
 test-output/
-
+.allure/
 ### Test Automation Artifacts ###
 screenshots/
 videos/
