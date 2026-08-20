@@ -39,9 +39,15 @@ public class CartPage {
     }
     
     public String getProductQuantity(String productName) {
-        // XPath to find qty based on sibling item name
-        String xpath = String.format("//div[text()='%s']/../../..//div[@class='cart_quantity']", productName);
-        return waitUtility.waitForElementVisible(By.xpath(xpath)).getText();
+        List<WebElement> items = driver.findElements(cartItems);
+        for (WebElement item : items) {
+            WebElement nameElement = item.findElement(inventoryItemName);
+            if (nameElement.getText().equals(productName)) {
+                WebElement quantityElement = item.findElement(cartQuantity);
+                return quantityElement.getText();
+            }
+        }
+        return "0";
     }
 
     public CheckoutPage proceedToCheckout() {

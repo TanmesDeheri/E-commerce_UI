@@ -12,7 +12,7 @@ public class CheckoutOverviewPage {
     private By finishButton = By.id("finish");
     private By summarySubtotalLabel = By.className("summary_subtotal_label");
     private By summaryTotalLabel = By.className("summary_total_label");
-    private By cartList = By.className("cart_list");
+    private By cartList = By.className("cart_item");
 
     public CheckoutOverviewPage(WebDriver driver) {
         this.driver = driver;
