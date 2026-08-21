@@ -39,11 +39,16 @@ public class CartPage {
     }
     
     public String getProductQuantity(String productName) {
-        // XPath similar to getProductPrice - find product by text, then get sibling quantity
-        String xpath = String.format("//div[text()='%s']/../../..//div[@class='cart_quantity']", productName);
-        List<WebElement> elements = driver.findElements(By.xpath(xpath));
-        if (elements.size() > 0) {
-            return elements.get(0).getText();
+        List<WebElement> cartItems = driver.findElements(By.className("cart_item"));
+        for (WebElement cartItem : cartItems) {
+            WebElement nameElement = cartItem.findElement(By.className("inventory_item_name"));
+            if (nameElement.getText().equals(productName)) {
+                List<WebElement> quantityElements = cartItem.findElements(By.className("cart_quantity"));
+                if (quantityElements.size() > 0) {
+                    return quantityElements.get(0).getText();
+                }
+                return "0";
+            }
         }
         return "0";
     }
