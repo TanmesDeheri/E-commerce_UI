@@ -115,7 +115,7 @@ graph TD
 [![UI Automation Tests](https://github.com/<github-username>/<repository-name>/actions/workflows/automation-tests.yml/badge.svg)](https://github.com/<github-username>/<repository-name>/actions/workflows/automation-tests.yml)
 
 **Live Allure Report:**
-[https://<github-username>.github.io/<repository-name>/](https://<github-username>.github.io/<repository-name>/)
+[https://<github-username>.github.io/<repository-name>/]([https://<github-username>.github.io/<repository-name>/](https://tanmesdeheri.github.io/E-commerce_UI/#))
 
 *(Note: Replace `<github-username>` and `<repository-name>` with your actual GitHub details. The URL becomes active after GitHub Pages is enabled in your repository settings and the first successful deployment occurs.)*
 
