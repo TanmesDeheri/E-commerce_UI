@@ -28,7 +28,7 @@ jobs:
         cache: maven
 
     - name: Run Maven Tests
-      run: mvn clean test -Dheadless=true -Dexecution.speed=0 "-Dallure.results.directory=target/allure-results"
+      run: mvn clean test -Dheadless=true -Dexecution.speed=0 -Dallure.results.directory=target/allure-results
       continue-on-error: true
       id: test
 
