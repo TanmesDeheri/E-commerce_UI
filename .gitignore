@@ -53,6 +53,6 @@ drivers/
 ### Environment Variables ###
 .env
 .env.*
-
+*.txt
 ### Test Data (Ignore if sensitive, keeping template) ###
 # src/test/resources/testdata/secrets.json
