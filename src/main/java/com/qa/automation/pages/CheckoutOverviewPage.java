@@ -12,7 +12,7 @@ public class CheckoutOverviewPage {
     private By finishButton = By.id("finish");
     private By summarySubtotalLabel = By.className("summary_subtotal_label");
     private By summaryTotalLabel = By.className("summary_total_label");
-    private By cartList = By.className("cart_list");
+    private By cartList = By.className("summary_subtotal_label");
 
     public CheckoutOverviewPage(WebDriver driver) {
         this.driver = driver;
@@ -32,9 +32,7 @@ public class CheckoutOverviewPage {
     }
 
     public CheckoutCompletePage clickFinish() {
-        org.openqa.selenium.WebElement finishBtn = waitUtility.waitForElementClickable(finishButton);
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", finishBtn);
-        finishBtn.click();
+        waitUtility.scrollAndClick(finishButton);
         return new CheckoutCompletePage(driver);
     }
 }

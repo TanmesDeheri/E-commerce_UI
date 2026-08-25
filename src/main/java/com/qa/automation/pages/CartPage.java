@@ -39,15 +39,22 @@ public class CartPage {
     }
     
     public String getProductQuantity(String productName) {
-        // XPath to find qty based on sibling item name
-        String xpath = String.format("//div[text()='%s']/../../..//div[@class='cart_quantity']", productName);
-        return waitUtility.waitForElementVisible(By.xpath(xpath)).getText();
+        List<WebElement> cartItems = driver.findElements(By.className("cart_item"));
+        for (WebElement cartItem : cartItems) {
+            WebElement nameElement = cartItem.findElement(By.className("inventory_item_name"));
+            if (nameElement.getText().equals(productName)) {
+                List<WebElement> quantityElements = cartItem.findElements(By.className("cart_quantity"));
+                if (quantityElements.size() > 0) {
+                    return quantityElements.get(0).getText();
+                }
+                return "0";
+            }
+        }
+        return "0";
     }
 
     public CheckoutPage proceedToCheckout() {
-        WebElement checkoutBtn = waitUtility.waitForElementClickable(checkoutButton);
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", checkoutBtn);
-        checkoutBtn.click();
+        waitUtility.scrollAndClick(checkoutButton);
         return new CheckoutPage(driver);
     }
 }

@@ -12,14 +12,17 @@ import java.time.Duration;
 
 public class WaitUtility {
     private static final Logger logger = LoggerFactory.getLogger(WaitUtility.class);
+    private final WebDriver driver;
     private final WebDriverWait wait;
 
     public WaitUtility(WebDriver driver) {
         long timeout = Long.parseLong(ConfigManager.getProperty("timeout", "10"));
+        this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
     }
 
     public WaitUtility(WebDriver driver, long timeoutInSeconds) {
+        this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
     }
 
@@ -51,5 +54,13 @@ public class WaitUtility {
     public boolean waitForUrlContains(String text) {
         logger.debug("Waiting for URL to contain: {}", text);
         return wait.until(ExpectedConditions.urlContains(text));
+    }
+    
+    public WebElement scrollAndClick(By locator) {
+        logger.debug("Scrolling and clicking element by locator: {}", locator);
+        WebElement element = waitForElementClickable(locator);
+        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+        element.click();
+        return element;
     }
 }

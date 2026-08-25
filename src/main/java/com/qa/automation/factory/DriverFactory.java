@@ -1,8 +1,8 @@
 package com.qa.automation.factory;
 
-import com.qa.automation.utils.ConfigManager;
-import com.qa.automation.utils.ExecutionDelay;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,6 +12,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.qa.automation.utils.ConfigManager;
+import com.qa.automation.utils.ExecutionDelay;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
     private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
@@ -28,6 +33,13 @@ public class DriverFactory {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
+                Map<String, Object> prefs = new HashMap<>();
+                prefs.put("credentials_enable_service", false);
+                prefs.put("profile.password_manager_enabled", false);
+                prefs.put("profile.password_manager_leak_detection", false);
+                chromeOptions.setExperimentalOption("prefs", prefs);
+                chromeOptions.addArguments("--disable-features=PasswordLeakDetection,PasswordManagerOnboarding,AutofillServerCommunication");
+                chromeOptions.addArguments("--disable-save-password-bubble");
                 if (isHeadless) {
                     chromeOptions.addArguments("--headless=new");
                     chromeOptions.addArguments("--no-sandbox");

@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 @Feature("Product Checkout")
 public class ProductCheckoutTest extends BaseTest {
 
-    @Test(description = "End-to-End Checkout Validation", groups = {"e2e", "regression"})
+    @Test(description = "End-to-End Checkout Validation", groups = { "e2e", "regression" })
     @Story("Complete Shopping Flow")
     @Severity(SeverityLevel.CRITICAL)
     public void testEndToEndCheckout() {
@@ -27,8 +27,7 @@ public class ProductCheckoutTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         ProductsPage productsPage = loginPage.login(
                 validUser.get("username").asText(),
-                validUser.get("password").asText()
-        );
+                validUser.get("password").asText());
 
         // Step 2: Select Product & Add to Cart
         productsPage.addProductToCart(productName);
@@ -38,24 +37,27 @@ public class ProductCheckoutTest extends BaseTest {
         CartPage cartPage = productsPage.goToCart();
         Assert.assertTrue(cartPage.isProductInCart(productName), "Product was not found in the cart.");
         Assert.assertEquals(cartPage.getProductQuantity(productName), "1", "Product quantity in cart is incorrect.");
-        Assert.assertEquals(cartPage.getProductPrice(productName), expectedPrice, "Product price in cart is incorrect.");
+        Assert.assertEquals(cartPage.getProductPrice(productName), expectedPrice,
+                "Product price in cart is incorrect.");
 
         // Step 4: Checkout
         CheckoutPage checkoutPage = cartPage.proceedToCheckout();
         checkoutPage.enterCustomerInformation(
                 checkoutUser.get("firstName").asText(),
                 checkoutUser.get("lastName").asText(),
-                checkoutUser.get("postalCode").asText()
-        );
+                checkoutUser.get("postalCode").asText());
         CheckoutOverviewPage overviewPage = checkoutPage.clickContinue();
 
         // Step 5: Verify Order Summary
         Assert.assertTrue(overviewPage.isOrderSummaryDisplayed(), "Order summary is not displayed.");
-        Assert.assertTrue(overviewPage.getSubtotal().contains(expectedPrice.replace("$", "")), "Subtotal is incorrect.");
+        Assert.assertTrue(overviewPage.getSubtotal().contains(expectedPrice.replace("$", "")),
+                "Subtotal is incorrect.");
 
         // Step 6: Finish Order
         CheckoutCompletePage completePage = overviewPage.clickFinish();
-        Assert.assertEquals(completePage.getCompleteHeader(), "Thank you for your order!", "Order completion header is incorrect.");
-        Assert.assertTrue(completePage.getCompleteText().contains("Your order has been dispatched"), "Order completion text is missing.");
+        Assert.assertEquals(completePage.getCompleteHeader(), "Thank you for your order!",
+                "Order completion header is incorrect.");
+        Assert.assertTrue(completePage.getCompleteText().contains("Your order has been dispatched"),
+                "Order completion text is missing.");
     }
 }
